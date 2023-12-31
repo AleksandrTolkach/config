@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: REPORT
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/report-service?ApplicationName=IDEA
+    username: ${db_user}
+    password: ${db_password}
+  jpa:
+    show-sql: true
+  kafka:
+    bootstrap-servers:
+      - localhost:9092
+    consumer:
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+server:
+  port: 8085

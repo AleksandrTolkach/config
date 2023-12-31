@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: MAIL
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/mail-service?ApplicationName=IDEA
+    username: ${db_user}
+    password: ${db_password}
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  mail:
+    host: smtp.mail.ru
+    port: 465
+    username: ${mail}
+    password: ${smtppassword}
+    protocol: smtp
+    properties:
+      "mail.from": ${mail}
+      "mail.smtp.ssl.enable": true
+      "mail.smtp.auth": true
+      "mail.smtp.starttls.enable": true
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+      instance:
+        preferIpAddress: true
+feign:
+  client:
+    config:
+      default:
+        eurekaEnabled: true
+server:
+  port: 8086
